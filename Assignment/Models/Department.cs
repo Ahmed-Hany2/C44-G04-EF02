@@ -10,16 +10,14 @@ namespace Assignment.Models
 {
     public class Department
     {
-        [Key]
         public int ID { get; set; }
-
-        [Required]
-        [MaxLength(50)]
         public string Name { get; set; }
-
-        public int Ins_ID { get; set; }
-
-        [Column(TypeName = "date")]
+        public int? Ins_ID { get; set; }
         public DateTime HiringDate { get; set; }
+
+        // Navigation Properties
+        public Instructor Manager { get; set; }
+        public ICollection<Student> Students { get; set; } = new List<Student>();
+        public ICollection<Instructor> Instructors { get; set; } = new List<Instructor>();
     }
 }

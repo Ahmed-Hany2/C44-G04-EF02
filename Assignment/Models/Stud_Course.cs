@@ -8,15 +8,21 @@ using System.Threading.Tasks;
 
 namespace Assignment.Models
 {
+
+    [Table("Stud_Course")]
     public class Stud_Course
     {
-        [Key]
-        public int StudentID { get; set; }
+        [Column("stud_ID")]
+        public int stud_ID { get; set; }
 
-        [Required]
-        public int CourseId { get; set; }
+        [Column("Course_ID")]
+        public int Course_ID { get; set; }
 
-        
-        public string Grade { get; set; }
+        [Column("Grade", TypeName = "decimal(5,2)")]
+        public decimal? Grade { get; set; }
+
+        // Navigation Properties
+        public Student Student { get; set; }
+        public Course Course { get; set; }
     }
 }
